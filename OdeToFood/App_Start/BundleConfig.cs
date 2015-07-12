@@ -11,6 +11,7 @@ namespace OdeToFood
 
             bundles.Add(new ScriptBundle("~/bundles/otf").Include(
                         "~/scripts/jquery-{version}.js",
+                        "~/scripts/jquery-ui-{version}.js",
                         "~/scripts/jquery.unobtrusive",
                         "~/scripts/jquery.validate",
                         "~/Scripts/bootstrap.js",
@@ -34,7 +35,8 @@ namespace OdeToFood
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/PagedList.css"));
         }
     }
 }
