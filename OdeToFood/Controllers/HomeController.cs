@@ -5,10 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Web.UI;
 
 namespace OdeToFood.Controllers
 {
-    [Authorize(Roles ="administrators, sales")]
+
     public class HomeController : Controller
     {
         OdeToFoodDB _db = new OdeToFoodDB();
@@ -25,7 +26,15 @@ namespace OdeToFood.Controllers
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
-        [AllowAnonymous]
+        //[ChildActionOnly]
+        //[OutputCache(Duration = 60)]
+        //public ActionResult SayHello()
+        //{
+        //    return Content("Hello");
+        //}
+
+
+        [OutputCache(CacheProfile = "Long", VaryByHeader ="X-Requested-With;Accept-Language", Location = OutputCacheLocation.Server)]
         public ActionResult Index(string searchTerm = null, int page = 1)
         {
             //var model = from r in _db.Restaurants
