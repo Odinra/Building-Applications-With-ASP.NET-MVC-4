@@ -24,24 +24,6 @@
 
 @*@Html.Action("SayHello")*@
 
-@{ 
-    var amount = 10.0m;
-    var someDate = DateTime.Now;
-}
-<div>
-    @OdeToFood.Views.Home.Resources.Greeting
-</div>
-<div>
-    @amount.ToString("c")
-</div>
-<div>
-    Long: @someDate.ToLongTimeString();
-</div>
-<div>
-    Short: @someDate.ToShortTimeString();
-</div>
-<div>
-    @someDate.ToLongDateString();
-</div>
+@ViewBag.MailServer
 
 @Html.Partial("_Restaurants", Model)
