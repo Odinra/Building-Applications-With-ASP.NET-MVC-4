@@ -8,6 +8,15 @@ namespace OdeToFood
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+
+            bundles.Add(new ScriptBundle("~/bundles/otf").Include(
+                        "~/scripts/jquery-{version}.js",
+                        "~/scripts/jquery.unobtrusive",
+                        "~/scripts/jquery.validate",
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/respond.js",
+                        "~/Scripts/otf.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
