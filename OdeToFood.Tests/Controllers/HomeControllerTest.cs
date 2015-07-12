@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OdeToFood;
 using OdeToFood.Controllers;
+using OdeToFood.Tests.Fakes;
+using OdeToFood.Models;
 
 namespace OdeToFood.Tests.Controllers
 {
@@ -16,13 +18,17 @@ namespace OdeToFood.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            var db = new FakeOdeToFoodDb();
+            db.AddSet(TestData.Restaurants);
+            HomeController controller = new HomeController(db);
+            controller.ControllerContext = new FakeControllerContext();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
+            IEnumerable<RestraurantListViewModel> model = result.Model as IEnumerable<RestraurantListViewModel>;
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.AreEqual(2, model.Count());
         }
 
         [TestMethod]
